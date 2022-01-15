@@ -33,7 +33,7 @@
     "react",
     "space"
   ],
-  "author": "June Domingo <junedomingo@gmail.com>",
+  "author": "hslavax <hengsheng@lavax.co>",
   "license": "MIT",
   "bin": {
     "react-native-rename": "lib/index.js"
