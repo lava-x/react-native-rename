@@ -1,5 +1,5 @@
 {
-  "name": "react-native-rename",
+  "name": "@lava-x/react-native-rename",
   "version": "2.9.1",
   "description": "Rename react-native app with just one command",
   "main": "lib/index.js",
@@ -33,7 +33,6 @@
     "react",
     "space"
   ],
-  "author": "hslavax <hengsheng@lavax.co>",
   "license": "MIT",
   "bin": {
     "react-native-rename": "lib/index.js"
@@ -63,5 +62,10 @@
     "jest": "^27.0.3",
     "lint-staged": "^4.3.0",
     "prettier": "^1.7.4"
-  }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "author": ""
 }
