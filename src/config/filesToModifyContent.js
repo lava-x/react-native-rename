@@ -55,7 +55,7 @@ export function filesToModifyContent(currentAppName, newName, bundleID, existing
 
   if (bundleID && existingBundleId) {
     result.push({
-      regex: existingBundleId,
+      regex: existingBundleId.trim(),
       replacement: bundleID,
       paths: [`ios/${nS_NewName}.xcodeproj/project.pbxproj`, 'ios/fastlane/Appfile'],
     });
