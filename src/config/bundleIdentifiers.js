@@ -15,7 +15,7 @@ export function bundleIdentifiers({ currentAppName, newName, currentBundleID, ne
     {
       regex: `"${currentBundleID}"`,
       replacement: `"${newBundleID}"`,
-      paths: ['android/app/BUCK', 'android/app/_BUCK', 'android/app/build.gradle'],
+      paths: ['android/app/BUCK', 'android/app/_BUCK', 'android/app/build.gradle', 'android/fastlane/Appfile'],
     },
     {
       regex: currentBundleID,

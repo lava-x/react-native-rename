@@ -15,7 +15,7 @@ import { filesToModifyContent } from './config/filesToModifyContent';
 import { bundleIdentifiers } from './config/bundleIdentifiers';
 import { loadAppConfig, loadAndroidManifest, __dirname, iosRequiredPaths } from './utils';
 
-const androidEnvs = ['main', 'debug'];
+const androidEnvs = ['main', 'debug', 'androidTest'];
 const projectName = pjson.name;
 const projectVersion = pjson.version;
 const replaceOptions = {
@@ -65,7 +65,10 @@ loadAppConfig()
         const bundleID = program.bundleID ? program.bundleID.toLowerCase() : null;
         let newBundlePath;
         const listOfFoldersAndFiles = foldersAndFiles(currentAppName, newName);
-        const listOfFilesToModifyContent = filesToModifyContent(currentAppName, newName, bundleID);
+        const existingBundleId = shell.exec(
+          'cd ios && echo $(xcodebuild -showBuildSettings | grep PRODUCT_BUNDLE_IDENTIFIER) | sed "s/ //g" | sed "s/PRODUCT_BUNDLE_IDENTIFIER//g" | sed "s/=//g"'
+        ).stdout;
+        const listOfFilesToModifyContent = filesToModifyContent(currentAppName, newName, bundleID, existingBundleId);
 
         if (bundleID) {
           newBundlePath = bundleID.replace(/\./g, '/');

@@ -1,11 +1,11 @@
 // nS - No Space
 // lC - Lowercase
 
-export function filesToModifyContent(currentAppName, newName, bundleID) {
+export function filesToModifyContent(currentAppName, newName, bundleID, existingBundleId) {
   const nS_CurrentAppName = currentAppName.replace(/\s/g, '');
   const nS_NewName = newName.replace(/\s/g, '');
 
-  return [
+  const result = [
     {
       regex: `<string name="app_name">${currentAppName}</string>`,
       replacement: `<string name="app_name">${newName}</string>`,
@@ -26,6 +26,7 @@ export function filesToModifyContent(currentAppName, newName, bundleID) {
         'android/settings.gradle',
         `ios/${nS_NewName}Tests/${nS_NewName}Tests.m`,
         'ios/build/info.plist',
+        'ios/fastlane/Fastfile',
         'ios/Podfile',
         'app.json',
       ],
@@ -41,11 +42,6 @@ export function filesToModifyContent(currentAppName, newName, bundleID) {
       paths: [`ios/${nS_NewName}/Info.plist`],
     },
     {
-      regex: /\$\(PRODUCT_BUNDLE_IDENTIFIER\)/,
-      replacement: bundleID,
-      paths: [`ios/${nS_NewName}/Info.plist`],
-    },
-    {
       regex: `"name": "${nS_CurrentAppName}"`,
       replacement: `"name": "${nS_NewName}"`,
       paths: ['package.json'],
@@ -56,4 +52,14 @@ export function filesToModifyContent(currentAppName, newName, bundleID) {
       paths: ['app.json'],
     },
   ];
+
+  if (bundleID && existingBundleId) {
+    result.push({
+      regex: existingBundleId,
+      replacement: bundleID,
+      paths: [`ios/${nS_NewName}.xcodeproj/project.pbxproj`, 'ios/fastlane/Appfile'],
+    });
+  }
+
+  return result;
 }
