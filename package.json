@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/junedomingo/react-native-rename.git"
+    "url": "git+https://github.com/lava-x/react-native-rename.git"
   },
   "keywords": [
     "react-native",
@@ -39,9 +39,9 @@
     "react-native-rename": "lib/index.js"
   },
   "bugs": {
-    "url": "https://github.com/junedomingo/react-native-rename/issues"
+    "url": "https://github.com/lava-x/react-native-rename/issues"
   },
-  "homepage": "https://github.com/junedomingo/react-native-rename#readme",
+  "homepage": "https://github.com/lava-x/react-native-rename#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
     "colors": "^1.1.2",
